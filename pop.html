@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="pop.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+  </head>
+</head>
+<body>
+  <header>
+    <div class="search">
+      <input class="query" type="text" placeholder="search a movie ">
+      <button class="searchBtn" ><i class="fa-solid fa-magnifying-glass"></i>
+      </button >
+      <div class="user"> <i class="fa-regular fa-user"></i>
+      </div>
+      <ul class="options hide2" >
+        <li><a class="option" href="login.html">sign up</a></li>
+        <li><a class="option" href="">setting</a></li>
+        <li><a class="option"href="">login</a></li>
+        <li><a class="option"href="">else</a></li>
+      </ul>
+      </div>
+    </div>
+    <h2 id="search-info" class="hide"></h2>
+  </header>
+  
+  <div class="control">
+    <button id="previous"><i class="fa-solid fa-angles-left"></i></button>
+    <div class="images"> 
+    </div>
+    <button id="next"><i class="fa-solid fa-angles-right"></i></button>
+  </div>
+  
+  <div id="movie-details"class="movie-details hide">
+  </div>
+        
+    <script src="pop.js"></script>
+  </body>
+</html>
