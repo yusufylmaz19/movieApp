@@ -1,10 +1,11 @@
 let page = 1;
 let id=0;
+// apı urls
 const APIKEY = "56c6bd58be3354c088bd74bc97ababa5";
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKEY}&language=en-US&page=${page}`;
 const IMGPATH = `https://image.tmdb.org/t/p/w1280/`;
 
-
+// reaching html elements
 const images = document.querySelector(".images");
 const nextBtn = document.getElementById("next");
 const previousBtn = document.getElementById("previous");
@@ -15,11 +16,15 @@ const detailsEl = document.getElementById("movie-details");
 const userEl = document.querySelector(".user");
 const optionsEl = document.querySelector(".options");
 
+// query value
+let qValue;
+
 searhBtn.addEventListener("click", () => {
   page=1;
   search(page);
-  queryEl.textContent="";
+  searchInfo.innerHTML=`results found for "<span id="query-input">${qValue}</span>"`;
   searchInfo.classList.remove('hide');
+  queryEl.value="";
 });
 
 userEl.addEventListener('click',()=>{
@@ -27,13 +32,14 @@ userEl.addEventListener('click',()=>{
 })
 
 
+
 // searching movies
 const search = (page) => {
-  const query = queryEl.value;
-  if (query === null || query === "") {
+   qValue=queryEl.value;
+  if (qValue === null || qValue === "") {
     console.log("you need put something");
   } else {
-    searchMovies(query,page);
+    searchMovies(qValue,page);
   }
 
 };
@@ -141,8 +147,10 @@ const searchMovies = (query,page) => {
   ;
 };
 
+// when result not found
 const whenNoResult=()=>{
-  searchInfo.innerHTML=`no results found for "<span id="query-input">${queryEl.value}</span>"`
+  searchInfo.innerHTML=`no results found for "<span id="query-input">${qValue}</span>"`
+
 }
 // setting rates color
 const setColorRate = (vote) => {
@@ -161,10 +169,12 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     search(page);
     searchInfo.classList.remove('hide');
-    searchInfo.innerHTML=`results found for "<span id="query-input">${queryEl.value}</span>"`;
-    queryEl.innerText="";
+    searchInfo.innerHTML=`results found for "<span id="query-input">${qValue}</span>"`;
+    queryEl.value="";
   }
 });
+
+
 
 // show details about the movie
 const showDetails= (movieID)=>{
