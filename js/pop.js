@@ -186,7 +186,7 @@ const showDetails= (movieID)=>{
   detailsEl.innerHTML=`<img class="poster"src=${IMGPATH+data.backdrop_path}>  
   <span class="X"><i class="fa-solid fa-xmark"></i></span>
   <form action="casts.html" method="get" target="_blank">
-  <input class="classified" name="id" value=${movieID}>
+  <input type="hidden" name="id" value=${movieID}>
   <button type="submit" class="cast-details"><i class="fa-solid fa-circle-info"></i></button>  
   </form>
   <p class="overview">${data.overview}</p>
