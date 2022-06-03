@@ -24,7 +24,6 @@ searhBtn.addEventListener("click", () => {
   search(page);
   searchInfo.innerHTML=`results found for "<span id="query-input">${qValue}</span>"`;
   searchInfo.classList.remove('hide');
-  queryEl.value="";
 });
 
 userEl.addEventListener('click',()=>{
@@ -41,7 +40,6 @@ const search = (page) => {
   } else {
     searchMovies(qValue,page);
   }
-
 };
 
 // next page button
@@ -102,7 +100,7 @@ const showMovies = (data) => {
       box.classList.add("box");
       box.innerHTML = `
     <h1 id="title">${t}</h1>
-    <button class="savelater"><i class="fa-solid fa-bookmark"></i></button>
+    <button class="savelater" movieID=${i}><i class="fa-solid fa-bookmark"></i></button>
     <img class="all-images" src="${IMGPATH + p}"
     />
     <div class="info">
@@ -117,9 +115,9 @@ const showMovies = (data) => {
       savelaterEl.addEventListener('click',()=>{
         savelaterEl.classList.toggle('saved');
         if(savelaterEl.classList.contains('saved')){
-          console.log('you save this movie well done!');
+            console.log(savelaterEl.attributes['movieID'].value);
         }else{
-          console.log('you removed this movie on your save list')
+            console.log('you removed this movie on your save list')
         }
       })
       box.addEventListener('click',()=>{
@@ -170,7 +168,6 @@ window.addEventListener("keydown", (e) => {
     search(page);
     searchInfo.classList.remove('hide');
     searchInfo.innerHTML=`results found for "<span id="query-input">${qValue}</span>"`;
-    queryEl.value="";
   }
 });
 
